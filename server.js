@@ -37,21 +37,6 @@ app.set("view engine", "handlebars");
 // =============================================================
 require("./routes/burger-api-routes.js")(app);
 
-
-
-
-
-// app.get("/", function(req, res) {
-//     db.Burger.findAll({})
-//     .then(function(data) {
-//       var hbsObject = {
-//         burger: data
-//       };
-//       console.log(hbsObject);
-//       res.render("index", hbsObject);
-//     });
-//   });
-
 app.use("/api/burgers", burgersController);
 
 // Requiring our models for syncing
