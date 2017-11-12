@@ -1,3 +1,16 @@
 
-	<p>{{dataValues.id}}: {{dataValues.burger_name}}
-	<button class="devour" data-id="{{this.dataValues.id}}">devour</button></p>
+	<p>
+{{!-- 		{{dataValues.id}}:  --}}
+		<br>
+
+		<form class="create-form burgs">
+
+		  <div class="form-group">
+		    <label for="customer">Enter your name to get the {{dataValues.burger_name}} burger.</label>
+		    <br>
+		    <input type="text" id="customer" name="name" placeholder="Whats yo name">
+		    <button class="devour" data-id="{{this.dataValues.id}}">devour</button>
+		  </div>
+		</form>
+		
+	</p>

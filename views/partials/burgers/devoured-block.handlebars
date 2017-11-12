@@ -1,3 +1,14 @@
+	<p>
+{{!-- 		{{dataValues.id}}:  --}}
+		<br>
 
-	<p>{{dataValues.id}}: {{dataValues.burger_name}}
-	<button class="delete" data-id="{{this.dataValues.id}}">delete</button></p>
+		<form class="create-form burgs">
+
+		  <div class="form-group">
+		    <label for="customer">{{this.dataValues.burger_name}} ate the  {{dataValues.burger_name}} burger.</label>
+		    <br>
+		    <button class="delete" data-id="{{this.dataValues.id}}">delete</button>
+		  </div>
+		</form>
+		
+	</p>
