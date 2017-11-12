@@ -1,7 +1,7 @@
 ### Schema
-
-CREATE DATABASE burgers_db;
-USE burgers_db;
+DROP DATABASE burgersSequelize_db;
+CREATE DATABASE burgersSequelize_db;
+USE burgersSequelize_db;
 
 CREATE TABLE burgers
 (

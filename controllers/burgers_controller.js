@@ -1,13 +1,14 @@
 // Import the model (burger.js) to use its database functions.
-var db = require("../models");
+var express = require("express")
 var router = express.Router();
+var db = require("../models");
+
 
 // Create our routes and set up logic within those routes where required.
 
 router.post("/", function(req, res) {
-  console.log(db.Burger)
     db.Burger.create({
-      burger_name: req.body.text,
+      burger_name: req.body.burger_name,
       devoured: false
     }).then(function(result) {
       // We have access to the new todo as an argument inside of the callback function
@@ -21,7 +22,7 @@ router.put("/:id", function(req, res) {
       devoured: true
     }, {
       where: {
-        id: req.body.id
+        id: req.params.id
       }
     }).then(function(result) {
       res.json(result);
@@ -39,3 +40,6 @@ router.delete("/:id", function(req, res) {
       res.json(result);
     });
 });
+
+
+module.exports = router;

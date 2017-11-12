@@ -1,40 +1,58 @@
-// Import the model (burger.js) to use its database functions.
 var db = require("../models");
 
-// Create our routes and set up logic within those routes where required.
 module.exports = function(app) {
-  app.post("/", function(req, res) {
-      db.Burger.create({
-        burger_name: req.body.text,
-        devoured: false
-      }).then(function(result) {
-        // We have access to the new todo as an argument inside of the callback function
-        res.json(result);
-      });
-  });
 
-  app.put("/:id", function(req, res) {
-
-    db.Burger.update({
-        devoured: true
-      }, {
-        where: {
-          id: req.body.id
-        }
-      }).then(function(result) {
-        res.json(result);
+  app.get("/", function(req, res) {
+    db.Burger.findAll({})
+    .then(function(data) {
+      var hbsObject = {
+        burger: data
+      };
+      console.log(hbsObject);
+      res.render("index", hbsObject);
     });
-
-
   });
 
-  app.delete("/:id", function(req, res) {
-      db.Burger.destroy({
-        where: {
-          id: req.params.id
-        }
-      }).then(function(result) {
-        res.json(result);
-      });
+
+  app.get("/api", function(req, res) {
+    // 1. Add a join to include all of each Author's Posts
+    db.Burger.findAll({}).then(function(result) {
+      res.json(result);
+    });
   });
-}
+
+  app.put("/api/burgers/:id", function(req, res) {
+    // 2; Add a join to include all of the Author's Posts here
+    db.Burger.update({
+      devoured: true,
+    },
+    {
+      where: {
+        id: req.params.id
+      }
+    }).then(function(result) {
+      res.json(result);
+    });
+  });
+
+  app.post("/api/burgers", function(req, res) {
+    console.log(req.body)
+    db.Burger.create({
+      burger_name: req.body.burger_name,
+      devoured: false
+    }).then(function(result) {
+      res.json(result);
+    });
+  });
+
+  app.delete("/api/burgers/:id", function(req, res) {
+    db.Burger.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(result) {
+      res.json(result);
+    });
+  });
+
+};

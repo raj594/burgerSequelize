@@ -1,16 +1,12 @@
 // Make sure we wait to attach our handlers until the DOM is fully loaded.
 $(function() {
   $(".devour").on("click", function(event) {
-    var id = $(this).data("id");
-
-    var eatIt = {
-      devoured: true
-    };
-
+    var id = parseInt($(this).data("id"));
     // Send the PUT request.
-    $.ajax("/api/burgers/" + id, {
+    $.ajax({
       type: "PUT",
-      id: true
+      url: "/api/burgers/" + id,
+      data: true
     }).then(
       function() {
         // Reload the page to get the updated list
@@ -20,11 +16,13 @@ $(function() {
   });
 
   $(".delete").on("click", function(event) {
+    event.stopPropagation();
     var id = $(this).data("id");
 
     // Send the PUT request.
     $.ajax("/api/burgers/" + id, {
       type: "DELETE",
+      url:"/api/burgers" + id
     }).then(
       function() {
         // Reload the page to get the updated list
@@ -39,7 +37,6 @@ $(function() {
 
     var newBurger = {
       burger_name: $("#burger").val().trim(),
-      devoured: false
     };
 
     // Send the POST request.
