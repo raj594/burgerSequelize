@@ -7,11 +7,6 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 
-// Import routes and give the server access to them.
-var burgersController = require("./controllers/burgers_controller.js");
-// Import the model (burger.js) to use its database functions.
-var burger = require("./models/burger.js");
-
 
 var port = process.env.PORT || 3000;
 
@@ -36,8 +31,8 @@ app.set("view engine", "handlebars");
 // Routes
 // =============================================================
 require("./routes/burger-api-routes.js")(app);
-
-app.use("/api/burgers", burgersController);
+require("./routes/customer-api-routes.js")(app);
+require("./routes/html-routes.js")(app);
 
 // Requiring our models for syncing
 var db = require("./models");

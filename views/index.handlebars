@@ -5,8 +5,8 @@
   <hr>
 <p></p>
   {{#each burger}}
-    {{#unless devoured}}
-      {{> burgers/burger-block devoured=true}}
+    {{#unless dataValues.devoured}}
+      {{> burgers/burger-block}}
     {{/unless}}
   {{/each}}
 
@@ -16,7 +16,7 @@
   <h2>Burgers You've Eaten</h2>
   <hr>
   {{#each burger}}
-    {{#if devoured}}
+    {{#if dataValues.devoured}}
       {{> burgers/devoured-block}}
     {{/if}}
   {{/each}}
