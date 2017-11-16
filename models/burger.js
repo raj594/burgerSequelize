@@ -17,11 +17,11 @@ module.exports = function(sequelize, DataTypes) {
 });
 
 
-  Burger.associate = function(models) {
-    // We're saying that a Post should belong to an Author
-    // A Post can't be created without an Author due to the foreign key constraint
-    Burger.belongsTo(models.Customer);
-  };
+  // Burger.associate = function(models) {
+  //   // We're saying that a Post should belong to an Author
+  //   // A Post can't be created without an Author due to the foreign key constraint
+  //   Burger.belongsTo(models.Customer);
+  // };
 
   return Burger;
 };

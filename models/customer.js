@@ -12,14 +12,14 @@ module.exports = function(sequelize, DataTypes) {
     timestamps: false
   });
 
-  Customer.associate = function(models) {
-    // Associating Customers with Burgers
-    // When a Customer eats a burger, the associated custoemr and burger information are displayed in the devoured column
-    Customer.hasMany(models.Burger,  {
-      foreignKey: {
-        allowNull: true
-      }
-    });
-  };
+  // Customer.associate = function(models) {
+  //   // Associating Customers with Burgers
+  //   // When a Customer eats a burger, the associated custoemr and burger information are displayed in the devoured column
+  //   Customer.hasMany(models.Burger,  {
+  //     foreignKey: {
+  //       allowNull: true
+  //     }
+  //   });
+  // };
   return Customer;
 };
